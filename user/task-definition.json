@@ -36,6 +36,24 @@
           "value": "user"
         }
       ],
+      "secrets": [
+        {
+          "name": "USER_PASSWORD",
+          "valueFrom": "Users123#$"
+        },
+        {
+          "name": "JWT_SECRET",
+          "valueFrom": "nchdenedjeyeneg364858939$%^&#7374HWNKFSDHEGYJKSDFJIOHDAG#NJDHIEDD"
+        },
+        {
+          "name": "GOOGLE_CLIENT_ID",
+          "valueFrom": "731263991590-h3e6ml9fel1i7780e6bajcnbrtng8q81.apps.googleusercontent.com"
+        },
+        {
+          "name": "GOOGLE_CLIENT_SECRET",
+          "valueFrom": "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"
+        }
+      ],
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
