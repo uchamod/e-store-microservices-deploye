@@ -1,0 +1,77 @@
+{
+  "family": "service-register-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "512",
+  "memory": "1024",
+  "executionRoleArn": "arn:aws:iam::774489111931:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::774489111931:role/ecsTaskRole",
+  "containerDefinitions": [
+    {
+      "name": "service-register",
+      "image": "774489111931.dkr.ecr.ap-south-1.amazonaws.com/service_register",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 8761,
+          "hostPort": 8761,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        {
+          "name": "SPRING_PROFILES_ACTIVE",
+          "value": "prod"
+        },
+        {
+          "name": "SERVER_PORT",
+          "value": "8761"
+        },
+        {
+          "name": "EUREKA_CLIENT_SERVICEURL_DEFAULTZONE",
+          "value": "http://service-register.extroverted-crocodile-uufy4z.local:8761/eureka/"
+        },
+        {
+          "name": "SPRING_APPLICATION_NAME",
+          "value": "service-register"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/service-register",
+          "awslogs-region": "ap-south-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "healthCheck": {
+        "command": [
+          "CMD-SHELL",
+          "wget --no-verbose --tries=1 --spider http://localhost:8761/actuator/health || exit 1"
+        ],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3,
+        "startPeriod": 60
+      },
+      "mountPoints": [],
+      "volumesFrom": []
+    }
+  ],
+  "volumes": [],
+  "placementConstraints": [],
+  "tags": [
+    {
+      "key": "Environment",
+      "value": "production"
+    },
+    {
+      "key": "Service",
+      "value": "service-register"
+    },
+    {
+      "key": "Cluster",
+      "value": "extroverted-crocodile-uufy4z"
+    }
+  ]
+}
