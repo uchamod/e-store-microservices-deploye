@@ -63,7 +63,7 @@ public class UserService {
             }
             Optional<User> user= userRepo.findById(uuid);
             if(user.isEmpty()){
-                System.out.println("no user releted to userId");
+                System.out.println("no user found");
                 return ResponseEntity.internalServerError().build();
             }
             UserWrapper userWrapper=new UserWrapper(
@@ -84,7 +84,7 @@ public class UserService {
         try{
             List<User> users=  userRepo.findUserByUserRole(userRole);
             if(users.isEmpty()){
-                System.out.println("no users");
+                System.out.println("no users found");
                 return ResponseEntity.notFound().build();
             }
 
