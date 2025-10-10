@@ -8,11 +8,19 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 @SpringBootApplication
 @EnableConfigurationProperties
-
+@EnableEurekaClient
 public class UserApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(UserApplication.class, args);
 	}
+
+@EventListener(ApplicationReadyEvent.class)
+public void applicationReady() {
+	System.out.println("EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: " +
+							   System.getenv("EUREKA_CLIENT_SERVICEURL_DEFAULTZONE"));
+	System.out.println("SPRING_PROFILES_ACTIVE: " +
+							   System.getenv("SPRING_PROFILES_ACTIVE"));
+}
 
 }

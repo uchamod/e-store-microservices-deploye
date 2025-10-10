@@ -28,6 +28,18 @@
           "value": "http://service-register.extroverted-crocodile-uufy4z.local:8761/eureka/"
         },
         {
+          "name": "EUREKA_CLIENT_REGISTER_WITH_EUREKA",
+          "value": "true"
+        },
+        {
+          "name": "EUREKA_CLIENT_FETCH_REGISTRY",
+          "value": "true"
+        },
+        {
+          "name": "EUREKA_INSTANCE_PREFER_IP_ADDRESS",
+          "value": "true"
+        },
+        {
           "name": "SERVER_PORT",
           "value": "8080"
         },
