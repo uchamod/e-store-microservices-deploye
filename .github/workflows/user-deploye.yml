@@ -35,7 +35,7 @@ jobs:
           cache: 'maven'
 
       - name: Run tests
-        working-directory: ./user-service
+        working-directory: ./user
         run: mvn clean test
 
       - name: Generate test report
@@ -43,7 +43,7 @@ jobs:
         uses: dorny/test-reporter@v1
         with:
           name: User Service Test Results
-          path: user-service/target/surefire-reports/*.xml
+          path: user/target/surefire-reports/*.xml
           reporter: java-junit
           fail-on-error: false
 
@@ -65,7 +65,7 @@ jobs:
           cache: 'maven'
 
       - name: Build with Maven
-        working-directory: ./user-service
+        working-directory: ./user
         run: mvn clean package -DskipTests
 
       - name: Configure AWS credentials
@@ -84,7 +84,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           IMAGE_TAG: ${{ github.sha }}
-        working-directory: ./user-service
+        working-directory: ./user
         run: |
           # Build Docker image
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
