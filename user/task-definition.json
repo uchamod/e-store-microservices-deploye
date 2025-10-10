@@ -39,19 +39,19 @@
       "secrets": [
         {
           "name": "USER_PASSWORD",
-          "valueFrom": "Users123#$"
+          "valueFrom": "arn:aws:secretsmanager:ap-south-1:774489111931:secret:USER_PASSWORD-B0gF1W"
         },
         {
           "name": "JWT_SECRET",
-          "valueFrom": "nchdenedjeyeneg364858939$%^&#7374HWNKFSDHEGYJKSDFJIOHDAG#NJDHIEDD"
+          "valueFrom": "arn:aws:secretsmanager:ap-south-1:774489111931:secret:user/secrets-nYxFLT"
         },
         {
           "name": "GOOGLE_CLIENT_ID",
-          "valueFrom": "731263991590-h3e6ml9fel1i7780e6bajcnbrtng8q81.apps.googleusercontent.com"
+          "valueFrom": "arn:aws:secretsmanager:ap-south-1:774489111931:secret:user/secrets-nYxFLT"
         },
         {
           "name": "GOOGLE_CLIENT_SECRET",
-          "valueFrom": "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"
+          "valueFrom": "arn:aws:secretsmanager:ap-south-1:774489111931:secret:user/secrets-nYxFLT"
         }
       ],
       "logConfiguration": {
