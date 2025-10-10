@@ -3,8 +3,8 @@ on:
   push:
     branches: [ develop ]
     paths:
-      - 'user-service/**'
-      - '.github/workflows/user-deploy.yml'
+      - 'user/**'
+      - '.github/workflows/user-deploye.yml'
   pull_request:
     branches: [ develop ]
     paths:
@@ -51,7 +51,7 @@ jobs:
   build-and-deploy:
     needs: test
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
 
     steps:
       - name: Checkout code
