@@ -10,6 +10,11 @@ on:
     paths:
       - 'user-service/**'
 
+permissions:
+  contents: read
+  checks: write
+  pull-requests: write
+
 env:
   AWS_REGION: ap-south-1
   ECR_REPOSITORY: user-service
