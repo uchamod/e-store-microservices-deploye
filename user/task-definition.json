@@ -38,10 +38,6 @@
       ],
       "secrets": [
         {
-          "name": "USER_PASSWORD",
-          "valueFrom": "Users123#$"
-        },
-        {
           "name": "JWT_SECRET",
           "valueFrom": "arn:aws:secretsmanager:ap-south-1:774489111931:secret:user/secrets-nYxFLT"
         },
