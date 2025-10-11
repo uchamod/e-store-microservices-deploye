@@ -23,44 +23,7 @@
           "name": "SPRING_PROFILES_ACTIVE",
           "value": "prod"
         },
-        {
-          "name": "EUREKA_CLIENT_SERVICEURL_DEFAULTZONE",
-          "value": "http://service-register.extroverted-crocodile-uufy4z.local:8761/eureka/"
-        },
-        {
-          "name": "EUREKA_CLIENT_REGISTER_WITH_EUREKA",
-          "value": "true"
-        },
-        {
-          "name": "EUREKA_CLIENT_FETCH_REGISTRY",
-          "value": "true"
-        },
-        {
-          "name": "EUREKA_INSTANCE_PREFER_IP_ADDRESS",
-          "value": "true"
-        },
-        {
-          "name": "SERVER_PORT",
-          "value": "8080"
-        },
-        {
-          "name": "SPRING_APPLICATION_NAME",
-          "value": "user"
-        },
-        {
-          "name": "MANAGEMENT_ENDPOINT_HEALTH_SHOW_DETAILS",
-          "value": "never"
-        },
-        {
-          "name": "MANAGEMENT_HEALTH_DB_ENABLED",
-          "value": "false"
-        },
-        {
-          "name": "MANAGEMENT_HEALTH_EUREKA_ENABLED",
-          "value": "false"
-        }
       ],
-
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
@@ -71,8 +34,10 @@
       },
       "healthCheck": {
         "command": [
-          "CMD-SHELL",
-          "curl -f http://localhost:8080/actuator/health || exit 1"
+          "CMD",
+          "curl",
+          "-f",
+          "http://localhost:8080/actuator/health"
         ],
         "interval": 60,
         "timeout": 20,

@@ -54,7 +54,7 @@ ENV JAVA_OPTS="-Xms256m -Xmx512m"
 
 
 # Update the port and path according to your service
-HEALTHCHECK --interval=30s --timeout=3s --start-period=60s --retries=3 \
+HEALTHCHECK --interval=60s --timeout=20s --start-period=180s --retries=5 \
     CMD wget --no-verbose --tries=1 --spider http://localhost:8080/actuator/health || exit 1
 
 # Run the application
