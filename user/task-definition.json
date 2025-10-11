@@ -44,6 +44,14 @@
         "retries": 5,
         "startPeriod": 300
       },
+      "serviceRegistries": [
+        {
+          "registryArn": "arn:aws:servicediscovery:ap-south-1:774489111931:service/srv-27ip4whtjb3w6d54",
+          "port": 8080,
+          "containerName": "user-service",
+          "containerPort": 8080
+        }
+      ]
       "mountPoints": [],
       "volumesFrom": []
     }
