@@ -46,22 +46,21 @@
         {
           "name": "SPRING_APPLICATION_NAME",
           "value": "user"
-        }
-      ],
-      "secrets": [
-        {
-          "name": "JWT_SECRET",
-          "valueFrom": "arn:aws:secretsmanager:ap-south-1:774489111931:secret:user/secrets-nYxFLT"
         },
         {
-          "name": "GOOGLE_CLIENT_ID",
-          "valueFrom": "arn:aws:secretsmanager:ap-south-1:774489111931:secret:user/secrets-nYxFLT"
+          "name": "MANAGEMENT_ENDPOINT_HEALTH_SHOW_DETAILS",
+          "value": "never"
         },
         {
-          "name": "GOOGLE_CLIENT_SECRET",
-          "valueFrom": "arn:aws:secretsmanager:ap-south-1:774489111931:secret:user/secrets-nYxFLT"
+          "name": "MANAGEMENT_HEALTH_DB_ENABLED",
+          "value": "false"
+        },
+        {
+          "name": "MANAGEMENT_HEALTH_EUREKA_ENABLED",
+          "value": "false"
         }
       ],
+
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
@@ -73,12 +72,12 @@
       "healthCheck": {
         "command": [
           "CMD-SHELL",
-          "wget --no-verbose --tries=1 --spider http://localhost:8080/actuator/health || exit 1"
+          "curl -f http://localhost:8080/actuator/health || exit 1"
         ],
-        "interval": 30,
-        "timeout": 5,
-        "retries": 3,
-        "startPeriod": 60
+        "interval": 60,
+        "timeout": 20,
+        "retries": 5,
+        "startPeriod": 300
       },
       "mountPoints": [],
       "volumesFrom": []
