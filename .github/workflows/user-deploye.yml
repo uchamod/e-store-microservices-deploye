@@ -18,7 +18,7 @@ permissions:
 env:
   AWS_REGION: ap-south-1
   ECR_REPOSITORY: user-service
-  ECS_SERVICE: user-service
+  ECS_SERVICE: user-services
   ECS_CLUSTER: extroverted-crocodile-uufy4z
   ECS_TASK_DEFINITION: user-service-task
   CONTAINER_NAME: user-service
