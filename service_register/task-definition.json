@@ -22,8 +22,7 @@
         {
           "name": "SPRING_PROFILES_ACTIVE",
           "value": "prod"
-        },
-
+        }
       ],
       "logConfiguration": {
         "logDriver": "awslogs",
