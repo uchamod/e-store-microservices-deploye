@@ -22,26 +22,10 @@
         {
           "name": "SPRING_PROFILES_ACTIVE",
           "value": "prod"
-        },
-        {
-          "name": "SERVER_PORT",
-          "value": "8082"
-        },
-        {
-          "name": "SPRING_APPLICATION_NAME",
-          "value": "cart"
         }
+
       ],
-      "secrets": [
-        {
-          "name": "DATABASE_PASSWORD",
-          "valueFrom": "arn:aws:secretsmanager::774489111931:secret:cart-service/db-password"
-        },
-        {
-          "name": "API_KEY",
-          "valueFrom": "arn:aws:secretsmanager:ap-south-1:774489111931:secret:cart-service/api-key"
-        }
-      ],
+
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
@@ -52,13 +36,15 @@
       },
       "healthCheck": {
         "command": [
-          "CMD-SHELL",
-          "wget --no-verbose --tries=1 --spider http://localhost:8082/actuator/health || exit 1"
+          "CMD",
+          "curl",
+          "-f",
+          "http://localhost:8080/actuator/health"
         ],
-        "interval": 30,
-        "timeout": 5,
-        "retries": 3,
-        "startPeriod": 60
+        "interval": 60,
+        "timeout": 20,
+        "retries": 5,
+        "startPeriod": 300
       },
       "mountPoints": [],
       "volumesFrom": []
