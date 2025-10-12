@@ -109,7 +109,7 @@ jobs:
           # Use LOCAL task definition file instead of downloading from AWS
       - name: Copy local task definition
         run: |
-          cp ./user/task-definition.json task-definition.json
+          cp ./service_register/task-definition.json task-definition.json
 
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
@@ -129,7 +129,7 @@ jobs:
 
       - name: Verify deployment
         run: |
-          echo "✅ User Service deployed successfully!"
+          echo "✅ Service Register deployed successfully!"
           echo "Service: ${{ env.ECS_SERVICE }}"
           echo "Cluster: ${{ env.ECS_CLUSTER }}"
           echo "Image: ${{ steps.build-image.outputs.image }}"
