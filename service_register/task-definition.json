@@ -8,7 +8,7 @@
   "taskRoleArn": "arn:aws:iam::774489111931:role/ecsTaskRole",
   "containerDefinitions": [
     {
-      "name": "service-register",
+      "name": "service_register",
       "image": "774489111931.dkr.ecr.ap-south-1.amazonaws.com/service_register",
       "essential": true,
       "portMappings": [
