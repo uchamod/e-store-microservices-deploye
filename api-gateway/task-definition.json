@@ -8,7 +8,7 @@
   "taskRoleArn": "arn:aws:iam::774489111931:role/ecsTaskRole",
   "containerDefinitions": [
     {
-      "name": "api-gateway",
+      "name": "api-gateway-service",
       "image": "774489111931.dkr.ecr.ap-south-1.amazonaws.com/api-gateway-service",
       "essential": true,
       "portMappings": [
@@ -27,7 +27,7 @@
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "/ecs/api-gateway",
+          "awslogs-group": "/ecs/api-gateway-service",
           "awslogs-region": "ap-south-1",
           "awslogs-stream-prefix": "ecs"
         }
@@ -44,6 +44,9 @@
         "retries": 5,
         "startPeriod": 300
       },
+      "mountPoints": [],
+      "volumesFrom": []
+    }
   ],
   "volumes": [],
   "placementConstraints": [],
@@ -54,7 +57,7 @@
     },
     {
       "key": "Service",
-      "value": "api-gateway"
+      "value": "api-gateway-service"
     },
     {
       "key": "Cluster",
