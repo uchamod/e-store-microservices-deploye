@@ -23,18 +23,7 @@
           "name": "SPRING_PROFILES_ACTIVE",
           "value": "prod"
         },
-        {
-          "name": "SERVER_PORT",
-          "value": "8761"
-        },
-        {
-          "name": "EUREKA_CLIENT_SERVICEURL_DEFAULTZONE",
-          "value": "http://service-register.extroverted-crocodile-uufy4z.local:8761/eureka/"
-        },
-        {
-          "name": "SPRING_APPLICATION_NAME",
-          "value": "service-register"
-        }
+
       ],
       "logConfiguration": {
         "logDriver": "awslogs",
@@ -46,14 +35,17 @@
       },
       "healthCheck": {
         "command": [
-          "CMD-SHELL",
-          "wget --no-verbose --tries=1 --spider http://localhost:8761/actuator/health || exit 1"
+          "CMD",
+          "curl",
+          "-f",
+          "http://localhost:8080/actuator/health"
         ],
-        "interval": 30,
-        "timeout": 5,
-        "retries": 3,
-        "startPeriod": 60
+        "interval": 60,
+        "timeout": 20,
+        "retries": 5,
+        "startPeriod": 300
       },
+
       "mountPoints": [],
       "volumesFrom": []
     }
