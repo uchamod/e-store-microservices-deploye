@@ -38,7 +38,7 @@
           "CMD",
           "curl",
           "-f",
-          "http://localhost:8080/actuator/health"
+          "http://localhost:8084/actuator/health"
         ],
         "interval": 60,
         "timeout": 20,
