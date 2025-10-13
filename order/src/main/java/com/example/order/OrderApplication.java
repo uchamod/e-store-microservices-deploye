@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
-//order service
+//Order service
 @SpringBootApplication
 @EnableFeignClients
 public class OrderApplication {
