@@ -18,7 +18,7 @@ permissions:
 env:
   AWS_REGION: ap-south-1
   ECR_REPOSITORY: cart-service
-  ECS_SERVICE: cart-services
+  ECS_SERVICE: cart-service
   ECS_CLUSTER: extroverted-crocodile-uufy4z
   ECS_TASK_DEFINITION: cart-service-task
   CONTAINER_NAME: cart-service
@@ -40,7 +40,7 @@ jobs:
           cache: 'maven'
 
       - name: Run tests with debug info
-        working-directory: ./cart
+        working-directory: ./Cart
         run: |
           echo "Running tests with debug info..."
           mvn test -X -Dmaven.test.failure.ignore=true
@@ -50,7 +50,7 @@ jobs:
         uses: dorny/test-reporter@v1
         with:
           name: User Service Test Results
-          path: cart/target/surefire-reports/*.xml
+          path: Cart/target/surefire-reports/*.xml
           reporter: java-junit
           fail-on-error: false
 
@@ -72,7 +72,7 @@ jobs:
           cache: 'maven'
 
       - name: Build with Maven
-        working-directory: ./cart
+        working-directory: ./Cart
         run: |
           echo "Building application with tests skipped..."
           mvn clean package -DskipTests=true -Dmaven.test.skip=true
@@ -93,7 +93,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           IMAGE_TAG: ${{ github.sha }}
-        working-directory: ./cart
+        working-directory: ./Cart
         run: |
           # Build Docker image
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
@@ -109,7 +109,7 @@ jobs:
           # Use LOCAL task definition file instead of downloading from AWS
       - name: Copy local task definition
         run: |
-          cp ./cart/task-definition.json task-definition.json
+          cp ./Cart/task-definition.json task-definition.json
 
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
