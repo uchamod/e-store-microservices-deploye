@@ -23,7 +23,7 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:21-jre-alpine
 
 # Install curl for ECS health checks to work
-RUN apk add --no-cache curl
+#RUN apk add --no-cache curl
 
 # Create non-root user for security
 RUN addgroup -S spring && adduser -S spring -G spring
